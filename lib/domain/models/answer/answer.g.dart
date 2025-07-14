@@ -8,12 +8,12 @@ part of 'answer.dart';
 
 _Answer _$AnswerFromJson(Map<String, dynamic> json) => _Answer(
   questionNumber: (json['questionNumber'] as num).toInt(),
-  status: $enumDecode(_$AnswerVariantEnumMap, json['status']),
+  answerVariant: $enumDecode(_$AnswerVariantEnumMap, json['answerVariant']),
 );
 
 Map<String, dynamic> _$AnswerToJson(_Answer instance) => <String, dynamic>{
   'questionNumber': instance.questionNumber,
-  'status': _$AnswerVariantEnumMap[instance.status]!,
+  'answerVariant': _$AnswerVariantEnumMap[instance.answerVariant]!,
 };
 
 const _$AnswerVariantEnumMap = {

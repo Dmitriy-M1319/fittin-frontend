@@ -8,10 +8,10 @@ part of 'question.dart';
 
 _Question _$QuestionFromJson(Map<String, dynamic> json) => _Question(
   number: (json['number'] as num).toInt(),
-  test: json['test'] as String,
+  text: json['text'] as String,
 );
 
 Map<String, dynamic> _$QuestionToJson(_Question instance) => <String, dynamic>{
   'number': instance.number,
-  'test': instance.test,
+  'text': instance.text,
 };

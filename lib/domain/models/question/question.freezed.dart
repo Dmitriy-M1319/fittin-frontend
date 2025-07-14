@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Question {
 
- int get number; String get test;
+ int get number; String get text;
 /// Create a copy of Question
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $QuestionCopyWith<Question> get copyWith => _$QuestionCopyWithImpl<Question>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Question&&(identical(other.number, number) || other.number == number)&&(identical(other.test, test) || other.test == test));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Question&&(identical(other.number, number) || other.number == number)&&(identical(other.text, text) || other.text == text));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,number,test);
+int get hashCode => Object.hash(runtimeType,number,text);
 
 @override
 String toString() {
-  return 'Question(number: $number, test: $test)';
+  return 'Question(number: $number, text: $text)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $QuestionCopyWith<$Res>  {
   factory $QuestionCopyWith(Question value, $Res Function(Question) _then) = _$QuestionCopyWithImpl;
 @useResult
 $Res call({
- int number, String test
+ int number, String text
 });
 
 
@@ -65,10 +65,10 @@ class _$QuestionCopyWithImpl<$Res>
 
 /// Create a copy of Question
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? number = null,Object? test = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? number = null,Object? text = null,}) {
   return _then(_self.copyWith(
 number: null == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
-as int,test: null == test ? _self.test : test // ignore: cast_nullable_to_non_nullable
+as int,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -154,10 +154,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int number,  String test)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int number,  String text)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Question() when $default != null:
-return $default(_that.number,_that.test);case _:
+return $default(_that.number,_that.text);case _:
   return orElse();
 
 }
@@ -175,10 +175,10 @@ return $default(_that.number,_that.test);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int number,  String test)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int number,  String text)  $default,) {final _that = this;
 switch (_that) {
 case _Question():
-return $default(_that.number,_that.test);case _:
+return $default(_that.number,_that.text);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -195,10 +195,10 @@ return $default(_that.number,_that.test);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int number,  String test)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int number,  String text)?  $default,) {final _that = this;
 switch (_that) {
 case _Question() when $default != null:
-return $default(_that.number,_that.test);case _:
+return $default(_that.number,_that.text);case _:
   return null;
 
 }
@@ -210,11 +210,11 @@ return $default(_that.number,_that.test);case _:
 @JsonSerializable()
 
 class _Question implements Question {
-  const _Question({required this.number, required this.test});
+  const _Question({required this.number, required this.text});
   factory _Question.fromJson(Map<String, dynamic> json) => _$QuestionFromJson(json);
 
 @override final  int number;
-@override final  String test;
+@override final  String text;
 
 /// Create a copy of Question
 /// with the given fields replaced by the non-null parameter values.
@@ -229,16 +229,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Question&&(identical(other.number, number) || other.number == number)&&(identical(other.test, test) || other.test == test));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Question&&(identical(other.number, number) || other.number == number)&&(identical(other.text, text) || other.text == text));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,number,test);
+int get hashCode => Object.hash(runtimeType,number,text);
 
 @override
 String toString() {
-  return 'Question(number: $number, test: $test)';
+  return 'Question(number: $number, text: $text)';
 }
 
 
@@ -249,7 +249,7 @@ abstract mixin class _$QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res>
   factory _$QuestionCopyWith(_Question value, $Res Function(_Question) _then) = __$QuestionCopyWithImpl;
 @override @useResult
 $Res call({
- int number, String test
+ int number, String text
 });
 
 
@@ -266,10 +266,10 @@ class __$QuestionCopyWithImpl<$Res>
 
 /// Create a copy of Question
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? number = null,Object? test = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? number = null,Object? text = null,}) {
   return _then(_Question(
 number: null == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
-as int,test: null == test ? _self.test : test // ignore: cast_nullable_to_non_nullable
+as int,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

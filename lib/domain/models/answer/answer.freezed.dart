@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Answer {
 
- int get questionNumber; AnswerVariant get status;
+ int get questionNumber; AnswerVariant get answerVariant;
 /// Create a copy of Answer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $AnswerCopyWith<Answer> get copyWith => _$AnswerCopyWithImpl<Answer>(this as Ans
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Answer&&(identical(other.questionNumber, questionNumber) || other.questionNumber == questionNumber)&&(identical(other.status, status) || other.status == status));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Answer&&(identical(other.questionNumber, questionNumber) || other.questionNumber == questionNumber)&&(identical(other.answerVariant, answerVariant) || other.answerVariant == answerVariant));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,questionNumber,status);
+int get hashCode => Object.hash(runtimeType,questionNumber,answerVariant);
 
 @override
 String toString() {
-  return 'Answer(questionNumber: $questionNumber, status: $status)';
+  return 'Answer(questionNumber: $questionNumber, answerVariant: $answerVariant)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $AnswerCopyWith<$Res>  {
   factory $AnswerCopyWith(Answer value, $Res Function(Answer) _then) = _$AnswerCopyWithImpl;
 @useResult
 $Res call({
- int questionNumber, AnswerVariant status
+ int questionNumber, AnswerVariant answerVariant
 });
 
 
@@ -65,10 +65,10 @@ class _$AnswerCopyWithImpl<$Res>
 
 /// Create a copy of Answer
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? questionNumber = null,Object? status = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? questionNumber = null,Object? answerVariant = null,}) {
   return _then(_self.copyWith(
 questionNumber: null == questionNumber ? _self.questionNumber : questionNumber // ignore: cast_nullable_to_non_nullable
-as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as int,answerVariant: null == answerVariant ? _self.answerVariant : answerVariant // ignore: cast_nullable_to_non_nullable
 as AnswerVariant,
   ));
 }
@@ -154,10 +154,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int questionNumber,  AnswerVariant status)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int questionNumber,  AnswerVariant answerVariant)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Answer() when $default != null:
-return $default(_that.questionNumber,_that.status);case _:
+return $default(_that.questionNumber,_that.answerVariant);case _:
   return orElse();
 
 }
@@ -175,10 +175,10 @@ return $default(_that.questionNumber,_that.status);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int questionNumber,  AnswerVariant status)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int questionNumber,  AnswerVariant answerVariant)  $default,) {final _that = this;
 switch (_that) {
 case _Answer():
-return $default(_that.questionNumber,_that.status);case _:
+return $default(_that.questionNumber,_that.answerVariant);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -195,10 +195,10 @@ return $default(_that.questionNumber,_that.status);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int questionNumber,  AnswerVariant status)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int questionNumber,  AnswerVariant answerVariant)?  $default,) {final _that = this;
 switch (_that) {
 case _Answer() when $default != null:
-return $default(_that.questionNumber,_that.status);case _:
+return $default(_that.questionNumber,_that.answerVariant);case _:
   return null;
 
 }
@@ -210,11 +210,11 @@ return $default(_that.questionNumber,_that.status);case _:
 @JsonSerializable()
 
 class _Answer implements Answer {
-  const _Answer({required this.questionNumber, required this.status});
+  const _Answer({required this.questionNumber, required this.answerVariant});
   factory _Answer.fromJson(Map<String, dynamic> json) => _$AnswerFromJson(json);
 
 @override final  int questionNumber;
-@override final  AnswerVariant status;
+@override final  AnswerVariant answerVariant;
 
 /// Create a copy of Answer
 /// with the given fields replaced by the non-null parameter values.
@@ -229,16 +229,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Answer&&(identical(other.questionNumber, questionNumber) || other.questionNumber == questionNumber)&&(identical(other.status, status) || other.status == status));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Answer&&(identical(other.questionNumber, questionNumber) || other.questionNumber == questionNumber)&&(identical(other.answerVariant, answerVariant) || other.answerVariant == answerVariant));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,questionNumber,status);
+int get hashCode => Object.hash(runtimeType,questionNumber,answerVariant);
 
 @override
 String toString() {
-  return 'Answer(questionNumber: $questionNumber, status: $status)';
+  return 'Answer(questionNumber: $questionNumber, answerVariant: $answerVariant)';
 }
 
 
@@ -249,7 +249,7 @@ abstract mixin class _$AnswerCopyWith<$Res> implements $AnswerCopyWith<$Res> {
   factory _$AnswerCopyWith(_Answer value, $Res Function(_Answer) _then) = __$AnswerCopyWithImpl;
 @override @useResult
 $Res call({
- int questionNumber, AnswerVariant status
+ int questionNumber, AnswerVariant answerVariant
 });
 
 
@@ -266,10 +266,10 @@ class __$AnswerCopyWithImpl<$Res>
 
 /// Create a copy of Answer
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? questionNumber = null,Object? status = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? questionNumber = null,Object? answerVariant = null,}) {
   return _then(_Answer(
 questionNumber: null == questionNumber ? _self.questionNumber : questionNumber // ignore: cast_nullable_to_non_nullable
-as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as int,answerVariant: null == answerVariant ? _self.answerVariant : answerVariant // ignore: cast_nullable_to_non_nullable
 as AnswerVariant,
   ));
 }

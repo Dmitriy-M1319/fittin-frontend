@@ -6,7 +6,7 @@ part 'question.g.dart';
 
 @freezed
 abstract class Question with _$Question {
-  const factory Question({required int number, required String test}) =
+  const factory Question({required int number, required String text}) =
       _Question;
 
   factory Question.fromJson(Map<String, Object?> json) =>

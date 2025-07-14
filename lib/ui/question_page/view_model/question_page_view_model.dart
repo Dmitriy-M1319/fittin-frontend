@@ -17,7 +17,7 @@ class QuestionPageViewModel extends ChangeNotifier {
 
   void addAnswer(AnswerVariant variant) {
     _answerRepository.addAnswer(
-      Answer(questionNumber: _currentQuestionNumber, status: variant),
+      Answer(questionNumber: _currentQuestionNumber, answerVariant: variant),
     );
     _currentQuestionNumber++;
     notifyListeners();

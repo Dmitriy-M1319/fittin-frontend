@@ -10,7 +10,7 @@ enum AnswerVariant { right, wrong, no_answer }
 abstract class Answer with _$Answer {
   const factory Answer({
     required int questionNumber,
-    required AnswerVariant status,
+    required AnswerVariant answerVariant,
   }) = _Answer;
 
   factory Answer.fromJson(Map<String, Object?> json) => _$AnswerFromJson(json);

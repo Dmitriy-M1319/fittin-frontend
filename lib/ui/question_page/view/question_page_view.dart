@@ -23,7 +23,7 @@ class QuestionPageView extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: Center(
                 child: Text(
-                  'Вопрос ${vm.currentQuestion.number}',
+                  'Вопрос ${vm.currentQuestion.number + 1}',
                   style: GoogleFonts.getFont(
                     "Montserrat",
                     fontSize: 30,
@@ -35,7 +35,7 @@ class QuestionPageView extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                vm.currentQuestion.test,
+                vm.currentQuestion.text,
                 textAlign: TextAlign.justify,
                 style: GoogleFonts.getFont(
                   "Montserrat",
