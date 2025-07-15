@@ -1,6 +1,7 @@
 import 'package:fittin_frontend/assets.dart';
 import 'package:fittin_frontend/domain/models/answer/answer.dart';
 import 'package:fittin_frontend/ui/question_page/view_model/question_page_view_model.dart';
+import 'package:fittin_frontend/ui/result_page/view/result_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +12,15 @@ class QuestionPageView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(questionPageProvider);
+
+    if (vm.isTestCompleted) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ResultPageView()),
+        );
+      });
+    }
 
     return Scaffold(
       body: Container(

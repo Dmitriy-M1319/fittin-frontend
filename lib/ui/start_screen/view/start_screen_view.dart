@@ -1,5 +1,6 @@
 import 'package:fittin_frontend/assets.dart';
 import 'package:fittin_frontend/ui/question_page/view/question_page_view.dart';
+import 'package:fittin_frontend/ui/result_page/view/result_page_view.dart';
 import 'package:fittin_frontend/ui/start_screen/view_model/start_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -77,26 +78,25 @@ class StartTestScreenView extends ConsumerWidget {
     final vm = ref.watch(startScreenProvider);
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: LightUiTheme.backgroundColor,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Инструкция',
+          style: GoogleFonts.getFont(
+            "Montserrat",
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Container(
         color: LightUiTheme.backgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Центральный текст
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0),
-              child: Center(
-                child: Text(
-                  'Инструкция',
-                  style: GoogleFonts.getFont(
-                    "Montserrat",
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.only(left: 16.0, right: 16.0),
@@ -126,6 +126,7 @@ class StartTestScreenView extends ConsumerWidget {
                     vm.startTest();
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => QuestionPageView()),
+                      //MaterialPageRoute(builder: (_) => ResultPageView()),
                     );
                   },
                   child: Text(

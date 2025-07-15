@@ -11,15 +11,22 @@ class QuestionPageViewModel extends ChangeNotifier {
   final _answerRepository = GetIt.I.get<AnswerRepository>();
 
   int _currentQuestionNumber = 1;
+  bool _isTestCompleted = false;
 
   Question get currentQuestion =>
       _questionRepository.questions[_currentQuestionNumber - 1];
+
+  bool get isTestCompleted => _isTestCompleted;
 
   void addAnswer(AnswerVariant variant) {
     _answerRepository.addAnswer(
       Answer(questionNumber: _currentQuestionNumber, answerVariant: variant),
     );
-    _currentQuestionNumber++;
+    if (_currentQuestionNumber == _questionRepository.questions.length) {
+      _isTestCompleted = true;
+    } else {
+      _currentQuestionNumber++;
+    }
     notifyListeners();
   }
 }
