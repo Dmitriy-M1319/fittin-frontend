@@ -22,6 +22,9 @@ abstract class RestClient {
 
   @POST('/calculate')
   Future<TestResult> calculateTestResult(@Body() TestAttemptRequest request);
+
+  @POST('/answer-all')
+  Future<void> addAllAnswers(@Body() TestAnswerAddRequest request);
 }
 
 @JsonSerializable()

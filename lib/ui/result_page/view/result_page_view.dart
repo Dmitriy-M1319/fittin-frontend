@@ -5,6 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:markdown_widget/markdown_widget.dart';
+
+final MarkdownConfig customMarkdownConfig = MarkdownConfig(
+  configs: [
+    PConfig(
+      textStyle: TextStyle(fontFamily: 'Montserrat', fontSize: 12, height: 1.5),
+    ),
+    H1Config(
+      style: TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    H2Config(
+      style: TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    // Добавьте конфигурации для других элементов по необходимости
+  ],
+);
 
 class ResultPageView extends ConsumerWidget {
   const ResultPageView({super.key});
@@ -28,9 +52,10 @@ class ResultPageView extends ConsumerWidget {
         ),
         centerTitle: true,
       ),
-      body: vm.isResultCalculating
-          ? _buildLoadingIndicator()
-          : _buildResultContent(vm.calculatedResult),
+      body:
+          vm.isResultCalculating
+              ? _buildLoadingIndicator()
+              : _buildResultContent(vm.calculatedResult),
     );
   }
 
@@ -144,35 +169,37 @@ class ResultPageView extends ConsumerWidget {
           gridData: FlGridData(
             show: true,
             checkToShowHorizontalLine: (value) => value % 10 == 0,
-            getDrawingHorizontalLine: (value) =>
-                FlLine(color: Colors.grey.withOpacity(0.3), strokeWidth: 1),
+            getDrawingHorizontalLine:
+                (value) =>
+                    FlLine(color: Colors.grey.withOpacity(0.3), strokeWidth: 1),
           ),
           borderData: FlBorderData(
             show: true,
             border: Border.all(color: Colors.grey),
           ),
-          barGroups: testResult.scales
-              .asMap()
-              .entries
-              .map(
-                (entry) => BarChartGroupData(
-                  x: entry.key,
-                  barRods: [
-                    BarChartRodData(
-                      toY: entry.value.value.toDouble(),
-                      color: _getColorForValue(entry.value.value),
-                      width: 16,
-                      borderRadius: BorderRadius.circular(4),
-                      backDrawRodData: BackgroundBarChartRodData(
-                        show: true,
-                        toY: 100,
-                        color: Colors.grey[200],
-                      ),
+          barGroups:
+              testResult.scales
+                  .asMap()
+                  .entries
+                  .map(
+                    (entry) => BarChartGroupData(
+                      x: entry.key,
+                      barRods: [
+                        BarChartRodData(
+                          toY: entry.value.value.toDouble(),
+                          color: _getColorForValue(entry.value.value),
+                          width: 16,
+                          borderRadius: BorderRadius.circular(4),
+                          backDrawRodData: BackgroundBarChartRodData(
+                            show: true,
+                            toY: 100,
+                            color: Colors.grey[200],
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              )
-              .toList(),
+                  )
+                  .toList(),
         ),
       ),
     );
@@ -285,14 +312,19 @@ class ResultPageView extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
-              testResult.information,
-              style: GoogleFonts.getFont(
-                "Montserrat",
-                fontSize: 12,
-                color: Colors.black,
-              ),
+            MarkdownWidget(
+              data: testResult.information,
+              shrinkWrap: true,
+              config: customMarkdownConfig,
             ),
+            // Text(
+            //   testResult.information,
+            //   style: GoogleFonts.getFont(
+            //     "Montserrat",
+            //     fontSize: 12,
+            //     color: Colors.black,
+            //   ),
+            // ),
             const SizedBox(height: 16),
             Text(
               'Рекомендации:',

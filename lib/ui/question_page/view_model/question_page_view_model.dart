@@ -16,6 +16,8 @@ class QuestionPageViewModel extends ChangeNotifier {
   Question get currentQuestion =>
       _questionRepository.questions[_currentQuestionNumber - 1];
 
+  int get currentQuestionNumber => _currentQuestionNumber;
+  int get totalQuestions => _questionRepository.questions.length;
   bool get isTestCompleted => _isTestCompleted;
 
   void addAnswer(AnswerVariant variant) {
@@ -27,6 +29,24 @@ class QuestionPageViewModel extends ChangeNotifier {
     } else {
       _currentQuestionNumber++;
     }
+    notifyListeners();
+  }
+
+  void answerAll(bool allTrue) {
+    final questions = _questionRepository.questions;
+    final currentNumber = _currentQuestionNumber;
+
+    for (int i = currentNumber; i <= questions.length; i++) {
+      _answerRepository.addAnswer(
+        Answer(
+          questionNumber: i,
+          answerVariant: allTrue ? AnswerVariant.right : AnswerVariant.wrong,
+        ),
+      );
+    }
+
+    _currentQuestionNumber = questions.length;
+    _isTestCompleted = true;
     notifyListeners();
   }
 }

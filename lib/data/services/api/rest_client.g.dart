@@ -16,9 +16,10 @@ TestAnswerAddRequest _$TestAnswerAddRequestFromJson(
   Map<String, dynamic> json,
 ) => TestAnswerAddRequest(
   uuid: json['uuid'] as String?,
-  answer: json['answer'] == null
-      ? null
-      : Answer.fromJson(json['answer'] as Map<String, dynamic>),
+  answer:
+      json['answer'] == null
+          ? null
+          : Answer.fromJson(json['answer'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$TestAnswerAddRequestToJson(
@@ -61,9 +62,10 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<List<dynamic>>(_options);
     late List<Question> _value;
     try {
-      _value = _result.data!
-          .map((dynamic i) => Question.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value =
+          _result.data!
+              .map((dynamic i) => Question.fromJson(i as Map<String, dynamic>))
+              .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -137,6 +139,26 @@ class _RestClient implements RestClient {
       rethrow;
     }
     return _value;
+  }
+
+  @override
+  Future<void> addAllAnswers(TestAnswerAddRequest request) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/answer-all',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

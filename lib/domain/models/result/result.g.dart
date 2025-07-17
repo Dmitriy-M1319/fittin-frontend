@@ -8,9 +8,10 @@ part of 'result.dart';
 
 _TestResult _$TestResultFromJson(Map<String, dynamic> json) => _TestResult(
   information: json['information'] as String,
-  scales: (json['scales'] as List<dynamic>)
-      .map((e) => ScaleResult.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  scales:
+      (json['scales'] as List<dynamic>)
+          .map((e) => ScaleResult.fromJson(e as Map<String, dynamic>))
+          .toList(),
   uuid: json['uuid'] as String,
 );
 

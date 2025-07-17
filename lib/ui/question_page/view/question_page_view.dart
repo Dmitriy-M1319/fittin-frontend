@@ -28,6 +28,37 @@ class QuestionPageView extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            LinearProgressIndicator(
+              value: vm.currentQuestionNumber / vm.totalQuestions,
+              backgroundColor: Colors.grey[300],
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+              minHeight: 8,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => _showConfirmAllDialog(context, true, ref),
+                    child: Text('Все верно'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green[100],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => _showConfirmAllDialog(context, false, ref),
+                    child: Text('Все неверно'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red[100],
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -119,6 +150,36 @@ class QuestionPageView extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void _showConfirmAllDialog(
+    BuildContext context,
+    bool allTrue,
+    WidgetRef ref,
+  ) {
+    showDialog(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Text('Подтверждение'),
+            content: Text(
+              'Вы уверены, что хотите отметить ${allTrue ? 'все ответы как "Верно"' : 'все ответы как "Неверно"'}?',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Отмена'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  ref.read(questionPageProvider.notifier).answerAll(allTrue);
+                },
+                child: Text('Подтвердить'),
+              ),
+            ],
+          ),
     );
   }
 }
